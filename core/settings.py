@@ -30,9 +30,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # 3rd party
+    'easy_thumbnails',
+    'filer',
+    'mptt',
 
     # mu apps
     'users.apps.UsersConfig',
+    'book.apps.BookConfig',
 
 ]
 
@@ -117,3 +121,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Config CustomUser
 AUTH_USER_MODEL = 'users.CustomUser'
+
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    # 'easy_thumbnails.processors.scale_and_crop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters',
+)
+
+FILER_CANONICAL_URL = 'sharing/'
